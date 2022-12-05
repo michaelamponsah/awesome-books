@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome Books</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <header>
+    <nav class="nav-bar">
+      <h2>Awesome books</h2>
+      <ul class="nav-icons">
+        <li class="nav-item nav--active" data-list>List</li>
+        <hr class="hr1">
+        <li class="nav-item" data-add-new>Add new</li>
+        <hr class="hr2">
+        <li class="nav-item" data-contact>Contact</li>
+      </ul>
+    </nav>
+    <div class="date-time-wrapper">
+      time
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="date"></div>
+    <h1 class="title">All awesome books</h1>
+    <section>
+      <div class="book-author-collections" id="list">
+
+      </div>
+      <div class="form-wrapper" id="form">
+        <form action="" class="" id="addBook">
+          <div class="form-field">
+            <label for="book-title" hidden></label>
+            <input type="text" name="book-title" placeholder="Title" id="book-title" required>
+          </div>
+          <div class="form-field">
+            <label for="author-name" hidden></label>
+            <input type="text" name="author-name" placeholder="Author" id="author-name" required>
+          </div>
+          <div class="form-field btn-wrapper">
+            <button type="submit" id="add-data" class="btn btn-add">Add</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="contact-section" id="contact">
+      <div class="contact-ins">
+        <p>Do have any questions or you just wnat to say "Hello" <br> You can reach out to us!</p>
+        <ul>
+          <li>Our e-mail: <span>gauravgangwar501@gmail.com & micheal@gamil.com</span></li>
+          <li>Our phone number +25478941664</li>
+          <li>Our address</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Copyright @ Awesome Books creators</p>
+  </footer>
+  <script src="./js/index.js" type="module"></script>
+</body>
+
+</html>
