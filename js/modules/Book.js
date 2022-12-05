@@ -1,5 +1,7 @@
+import Storage from './Storage.js';
+
 class Book {
-  static #DATA_KEY = 'books';
+  DATA_KEY = 'books';
 
   static #booksDataFromLocalStorage;
 
@@ -7,39 +9,32 @@ class Book {
     this.bookId = bookId;
     this.bookTitle = bookTitle;
     this.bookAuthor = bookAuthor;
-  }
-
-  static #getBooksDataFromLocalStorage() {
-    return JSON.parse(localStorage.getItem(this.#DATA_KEY));
-  }
-
-  static #saveBooksDataToLocalStorage(data) {
-    localStorage.setItem(this.#DATA_KEY, JSON.stringify(data));
+    this.store = new Storage(this.DATA_KEY);
   }
 
   static get getStoredDataFromStorage() {
-    return this.#getBooksDataFromLocalStorage();
+    return Storage.getBooksDataFromLocalStorage();
   }
 
   static addBookToStorage(bookDetails) {
-    this.#booksDataFromLocalStorage = this.#getBooksDataFromLocalStorage();
+    this.#booksDataFromLocalStorage = Storage.getBooksDataFromLocalStorage();
 
     if (!this.#booksDataFromLocalStorage) {
       this.newData = [];
       this.newData.push(bookDetails);
-      this.#saveBooksDataToLocalStorage(this.newData);
+      Storage.saveBooksDataToLocalStorage(this.newData);
       return;
     }
 
-    this.updatedData = [...this.#getBooksDataFromLocalStorage()];
+    this.updatedData = [...Storage.getBooksDataFromLocalStorage()];
     this.updatedData.push(bookDetails);
-    this.#saveBooksDataToLocalStorage(this.updatedData);
+    Storage.saveBooksDataToLocalStorage(this.updatedData);
   }
 
   static removeBookFromStorage(bookId) {
-    const dataFromStore = this.#getBooksDataFromLocalStorage();
+    const dataFromStore = Storage.getBooksDataFromLocalStorage();
     const updatedData = dataFromStore.filter((book) => book.bookId !== bookId);
-    this.#saveBooksDataToLocalStorage(updatedData);
+    Storage.saveBooksDataToLocalStorage(updatedData);
   }
 }
 
