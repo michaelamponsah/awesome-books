@@ -1,27 +1,14 @@
 import Book from './modules/Book.js';
-import bookCardBuilder from './modules/bookCardBuilder.js';
+import getDateAndTime from './modules/getDate.js';
 import handleActiveLink from './modules/handleActiveLink.js';
+import handleDataDisplay from './modules/handleDataDisplay.js';
 import handleSectionDisplay from './modules/handleSectionDisplay.js';
 import handleTitleChange from './modules/handleTitleChange.js';
 import getUniqueIdentifier from './modules/uniqueIdGenerator.js';
 
 const addBookForm = document.querySelector('#addBook');
-const cardsDiv = document.querySelector('.book-author-collections');
 
-const displayData = () => {
-  const booksData = Book.getStoredDataFromStorage;
-  if (!booksData || booksData.length === 0) {
-    cardsDiv.innerHTML += '<p>No data to display...</p>';
-    return;
-  }
-
-  booksData.forEach((book) => {
-    const bookCard = bookCardBuilder(book);
-    cardsDiv.insertAdjacentHTML('afterbegin', bookCard);
-  });
-};
-
-displayData();
+window.onload = (handleDataDisplay());
 
 addBookForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -74,5 +61,5 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// const dateTimeWrapper = document.querySelector('.date-time-wrapper');
-// dateTimeWrapper.innerText = getDateAndTime();
+const dateTimeWrapper = document.querySelector('.date-time-wrapper');
+dateTimeWrapper.innerText = getDateAndTime();
